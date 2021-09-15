@@ -1,0 +1,64 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+}
+
+def app_android = getRootProject().ext.app_android;
+
+def app_implementation = rootProject.ext.app_implementation;
+
+def url = this.getRootProject().ext.url;
+
+android {
+    compileSdk app_android.compileSdkVersion
+
+    defaultConfig {
+        applicationId app_android.applicationId
+        minSdkVersion app_android.minSdkVersion
+        targetSdkVersion app_android.targetSdkVersion
+        versionCode app_android.versionCode
+        versionName app_android.versionName
+
+        testInstrumentationRunner app_android.testInstrumentationRunner
+
+        multiDexEnabled true
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [moduleName: project.getName()]
+            }
+        }
+    }
+
+    buildTypes {
+        debug {
+            buildConfigField("String", "SERVER_URL", "\"${url.debug}\"")
+        }
+        release {
+            buildConfigField("String", "SERVER_URL", "\"${url.release}\"")
+
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    
+    app_implementation.each {
+        k, v -> implementation v
+    }
+    implementation project(":common") // 公共基础库
+
+    if (isRelease) {
+        implementation project(':my')
+    }
+}

@@ -1,0 +1,42 @@
+// 把一些公用的，共用的，可扩展的，加入到这里面来
+// 整个App项目的Gradle配置文件
+// ext 自定义增加我们的内容
+
+ext {
+    usename = "celeth"
+
+    // 开发环境 / 生产环境（测试/正式）
+    isRelease = true
+
+    app_android = [
+            compileSdkVersion        : 30,
+
+            applicationId            : "com.firefox.modulardemo",
+            minSdkVersion            : 15,
+            targetSdkVersion         : 30,
+            versionCode              : 1,
+            versionName              : "1.0",
+            testInstrumentationRunner: "androidx.test.runner.AndroidJUnitRunner"
+    ]
+
+    appId = ["app" : "com.firefox.modulardemo",
+             "my": "com.firefox.my"]
+
+    //  测试环境，正式环境 URL
+    url = [
+            "debug"  : "https://demo/debug",
+            "release": "https://demo/release"
+    ]
+
+    // 依赖相关的
+    app_implementation = [
+            "appcompat": "androidx.appcompat:appcompat:1.2.0",
+            "junit"    : "junit:junit:4.+",
+            "runner"   : "androidx.test:runner:1.2.0",
+            "espresso" : "androidx.test.espresso:espresso-core:3.3.0",
+            "material" : "com.google.android.material:material:1.3.0",
+            "ktx"      : "androidx.core:core-ktx:1.3.2",
+            "junitext" : "androidx.test.ext:junit:1.1.2",
+            "annotationProcessor":'com.alibaba:arouter-compiler:1.1.4'
+    ]
+}
