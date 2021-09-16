@@ -47,12 +47,29 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    flavorDimensions "site"
+
+    productFlavors {
+        site01 {
+            dimension "site"
+        }
+
+        site02 {
+            dimension "site"
+        }
+
+        site03 {
+            dimension "site"
+        }
+
+    }
 }
 
 dependencies {
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    
+
     app_implementation.each {
         k, v -> implementation v
     }
