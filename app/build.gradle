@@ -57,6 +57,7 @@ dependencies {
         k, v -> implementation v
     }
     implementation project(":common") // 公共基础库
+    implementation 'com.github.Leudora:test:1.2'
 
     if (isRelease) {
         implementation project(':my')

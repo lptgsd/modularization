@@ -16,4 +16,9 @@
         tools:layout_editor_absoluteY="346dp"
         tools:ignore="MissingConstraints" />
 
+    <FrameLayout
+        android:id="@+id/flContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

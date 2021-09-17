@@ -12,7 +12,7 @@ ext {
             compileSdkVersion        : 30,
 
             applicationId            : "com.firefox.modulardemo",
-            minSdkVersion            : 15,
+            minSdkVersion            : 16,
             targetSdkVersion         : 30,
             versionCode              : 1,
             versionName              : "1.0",
